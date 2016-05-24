@@ -1,0 +1,622 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'FormMain'
+  ClientHeight = 485
+  ClientWidth = 974
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object SB_Status: TRzStatusBar
+    Left = 0
+    Top = 466
+    Width = 974
+    Height = 19
+    BorderInner = fsNone
+    BorderOuter = fsNone
+    BorderSides = [sdLeft, sdTop, sdRight, sdBottom]
+    BorderWidth = 0
+    TabOrder = 0
+    Visible = False
+    VisualStyle = vsGradient
+    ExplicitLeft = 2
+    object RzStatusPane1: TRzStatusPane
+      Left = 0
+      Top = 0
+      Height = 19
+      Align = alLeft
+      ExplicitLeft = 876
+      ExplicitHeight = 20
+    end
+  end
+  object PC_Model: TRzPageControl
+    Left = 0
+    Top = 0
+    Width = 974
+    Height = 466
+    ActivePage = TS_Banka
+    Align = alClient
+    ShowFullFrame = False
+    ShowShadow = False
+    TabOrder = 1
+    Visible = False
+    FixedDimension = 19
+    object TS_Banka: TRzTabSheet
+      TabVisible = False
+      Caption = 'Rfid'#21150#21345
+      object RzSplitter1: TRzSplitter
+        Left = 0
+        Top = 0
+        Width = 974
+        Height = 465
+        Position = 250
+        Percent = 26
+        SplitterStyle = ssGroupBar
+        SplitterWidth = 6
+        Align = alClient
+        GradientDirection = gdSquareBox
+        TabOrder = 0
+        VisualStyle = vsGradient
+        BarSize = (
+          250
+          0
+          256
+          465)
+        UpperLeftControls = (
+          RzPanel1)
+        LowerRightControls = (
+          RzPanel2
+          RzDBGrid1)
+        object RzPanel1: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 250
+          Height = 465
+          Align = alClient
+          BorderOuter = fsNone
+          TabOrder = 0
+          VisualStyle = vsGradient
+          object RzGroupBox2: TRzGroupBox
+            Left = 0
+            Top = 0
+            Width = 250
+            Height = 465
+            Align = alClient
+            Caption = #26631#31614#20449#24687
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GradientDirection = gdHorizontalCenter
+            GroupStyle = gsBanner
+            ParentFont = False
+            TabOrder = 0
+            VisualStyle = vsGradient
+            object RzGroupBox1: TRzGroupBox
+              Left = 3
+              Top = 37
+              Width = 239
+              Height = 34
+              Caption = #26631#31614'ID'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 0
+              VisualStyle = vsGradient
+              object RzLabel1: TRzLabel
+                Left = 0
+                Top = 13
+                Width = 239
+                Height = 21
+                Align = alClient
+                Alignment = taRightJustify
+                Caption = 'ABCDEFGHABCDEFGHABCDEFGH'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = 4227327
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = [fsBold]
+                ParentFont = False
+                ExplicitLeft = 47
+                ExplicitWidth = 192
+                ExplicitHeight = 13
+              end
+            end
+            object RzGroupBox3: TRzGroupBox
+              Left = 2
+              Top = 117
+              Width = 91
+              Height = 34
+              Caption = #36710#29260#21495'(*)'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 1
+              VisualStyle = vsGradient
+              object RzEdit2: TRzEdit
+                Left = 0
+                Top = 13
+                Width = 91
+                Height = 21
+                Text = #27979'X00001'
+                Align = alClient
+                Alignment = taRightJustify
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = []
+                FrameStyle = fsNone
+                FrameVisible = True
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+            object RzGroupBox4: TRzGroupBox
+              Left = 122
+              Top = 117
+              Width = 91
+              Height = 34
+              Caption = #25346#36710#21495
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 2
+              VisualStyle = vsGradient
+              object RzEdit3: TRzEdit
+                Left = 0
+                Top = 13
+                Width = 91
+                Height = 21
+                Text = #25346'X00001'
+                Align = alClient
+                Alignment = taRightJustify
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = []
+                FrameStyle = fsNone
+                FrameVisible = True
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+            object RzGroupBox5: TRzGroupBox
+              Left = 2
+              Top = 157
+              Width = 76
+              Height = 34
+              Caption = #36710#20027#22995#21517
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 3
+              VisualStyle = vsGradient
+              object RzEdit1: TRzEdit
+                Left = 0
+                Top = 13
+                Width = 76
+                Height = 21
+                Text = #36213#23567#22235
+                Align = alClient
+                Alignment = taRightJustify
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = []
+                FrameStyle = fsNone
+                FrameVisible = True
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+            object RzGroupBox6: TRzGroupBox
+              Left = 98
+              Top = 157
+              Width = 115
+              Height = 34
+              Caption = #32852#31995#30005#35805
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 4
+              VisualStyle = vsGradient
+              object RzEdit4: TRzEdit
+                Left = 0
+                Top = 13
+                Width = 115
+                Height = 21
+                Text = '13901001234'
+                Align = alClient
+                Alignment = taRightJustify
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = []
+                FrameStyle = fsNone
+                FrameVisible = True
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+            object RzGroupBox7: TRzGroupBox
+              Left = 2
+              Top = 197
+              Width = 91
+              Height = 34
+              Caption = #36710#29260#21495'(*)'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 5
+              VisualStyle = vsGradient
+              object RzEdit5: TRzEdit
+                Left = 0
+                Top = 13
+                Width = 91
+                Height = 21
+                Text = #27979'X00001'
+                Align = alClient
+                Alignment = taRightJustify
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = []
+                FrameStyle = fsNone
+                FrameVisible = True
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+            object RzButton1: TRzButton
+              Left = 167
+              Top = 77
+              Caption = #35835#21345'(R)'
+              TabOrder = 6
+            end
+            object RzButton2: TRzButton
+              Left = 18
+              Top = 413
+              Caption = #32534#36753'(E)'
+              TabOrder = 7
+            end
+            object RzButton3: TRzButton
+              Left = 122
+              Top = 413
+              Caption = #20445#23384'(S)'
+              TabOrder = 8
+            end
+          end
+        end
+        object RzPanel2: TRzPanel
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 113
+          Align = alTop
+          BorderOuter = fsNone
+          TabOrder = 0
+          VisualStyle = vsGradient
+          object RzGroupBox8: TRzGroupBox
+            Left = 0
+            Top = 0
+            Width = 718
+            Height = 113
+            Align = alClient
+            Caption = #25968#25454#26597#35810
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            GroupStyle = gsBanner
+            ParentFont = False
+            TabOrder = 0
+            VisualStyle = vsGradient
+            object RzGroupBox9: TRzGroupBox
+              Left = 26
+              Top = 23
+              Width = 151
+              Height = 37
+              Caption = #24320#22987#26102#38388
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 0
+              VisualStyle = vsGradient
+              object RzDateTimeEdit1: TRzDateTimeEdit
+                Left = 0
+                Top = 13
+                Width = 151
+                Height = 21
+                EditType = etDate
+                Align = alTop
+                FrameStyle = fsNone
+                FramingPreference = fpCustomFraming
+                TabOrder = 0
+              end
+            end
+            object RzGroupBox10: TRzGroupBox
+              Left = 26
+              Top = 63
+              Width = 151
+              Height = 37
+              Caption = #32467#26463#26102#38388
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 1
+              VisualStyle = vsGradient
+              object RzDateTimeEdit2: TRzDateTimeEdit
+                Left = 0
+                Top = 13
+                Width = 151
+                Height = 21
+                EditType = etDate
+                Align = alTop
+                FrameStyle = fsNone
+                FramingPreference = fpCustomFraming
+                TabOrder = 0
+              end
+            end
+            object RzGroupBox11: TRzGroupBox
+              Left = 210
+              Top = 23
+              Width = 91
+              Height = 37
+              Caption = #36710#29260#21495
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = #23435#20307
+              Font.Style = []
+              GroupStyle = gsTopLine
+              ParentFont = False
+              TabOrder = 2
+              VisualStyle = vsGradient
+              object RzEdit6: TRzEdit
+                Left = 0
+                Top = 13
+                Width = 91
+                Height = 21
+                Text = #27979'X00001'
+                Align = alTop
+                Alignment = taRightJustify
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -13
+                Font.Name = #23435#20307
+                Font.Style = []
+                FrameStyle = fsNone
+                FrameVisible = True
+                ParentFont = False
+                TabOrder = 0
+              end
+            end
+            object RzCheckBox1: TRzCheckBox
+              Left = 303
+              Top = 36
+              Width = 19
+              Height = 15
+              State = cbUnchecked
+              TabOrder = 3
+            end
+            object RzButton4: TRzButton
+              Left = 303
+              Top = 82
+              Caption = #26597#35810
+              TabOrder = 4
+              OnClick = RzButton4Click
+            end
+            object Memo1: TMemo
+              Left = 440
+              Top = 32
+              Width = 185
+              Height = 89
+              Lines.Strings = (
+                '{"DataType":0,"ErrorMsg":null,"Ro'
+                'wNum":0,"JsonData":"[{\"RL_CHEL'
+                'XXBID\":\"2146aa75-edad-4054-'
+                'ba3f-d35f78178279\",\"RFIDH\":'
+                '\"TestCard\",\"CHEPH\":\"'#33945
+                'A5678\",\"CHELYS\":null,\"CHEXGD'
+                '\":0.0,\"CHEXCD\":0.0,\"CHEXKD'
+                '\":0.0,\"DIPGD\":0.0,'
+                '\"LAJWZ1\":0.0,\"LAJWZ2\":0.0,'
+                '\"LAJWZ3\":0.0,\"LAJSL\":0.0,'
+                '\"CARTYPE\":\"E\",\"MAXMZ'
+                '\":60.0,\"MINPZ\":19.90,'
+                '\"SUOCSC\":0.0,\"IS_SUOC\":\"N'
+                '\",\"LEIB\":\"zhuany\",\"YEWZT'
+                '\":6.0},{\"RL_CHELXXBID\":'
+                '\"9c123a1b-64ba-484a-9f7e-'
+                '154bcf003b85\",\"RFIDH\":null,'
+                '\"CHEPH\":\"'#33945'A12345\",\"CHELYS'
+                '\":null,\"CHEXGD\":10.0,\"CHEXCD'
+                '\":20.0,\"CHEXKD\":5.0,\"DIPGD'
+                '\":1.0,\"LAJWZ1\":1.0,'
+                '\"LAJWZ2\":1.0,\"LAJWZ3\":2.0,'
+                '\"LAJSL\":3.0,\"CARTYPE\":\"D\",'
+                '\"MAXMZ\":0.0,\"MINPZ\":0.0,'
+                '\"SUOCSC\":0.0,\"IS_SUOC\":\"N'
+                '\",\"LEIB\":\"ranm\",\"YEWZT'
+                '\":null},{\"RL_CHELXXBID\":'
+                '\"25bacbc7-5f6d-4f24-b333-'
+                '1ec272bd7935\",\"RFIDH\":null,'
+                '\"CHEPH\":\"'#33945'A66666\",\"CHELYS'
+                '\":null,\"CHEXGD\":0.0,\"CHEXCD'
+                '\":0.0,\"CHEXKD\":0.0,\"DIPGD'
+                '\":0.0,\"LAJWZ1\":0.0,'
+                '\"LAJWZ2\":0.0,\"LAJWZ3\":0.0,'
+                '\"LAJSL\":0.0,\"CARTYPE\":\"A\",'
+                '\"MAXMZ\":54.0,\"MINPZ\'
+                '":19.0,\"SUOCSC\":0.0,\"IS_SUOC'
+                '\":\"N\",\"LEIB\":\"ranm\",\"YEWZT'
+                '\":null},{\"RL_CHELXXBID\":'
+                '\"85ce9490-837f-440a-b412-'
+                'ad66a260db28\",\"RFIDH\":null,'
+                '\"CHEPH\":\"'#33945'B88888\",\"CHELYS'
+                '\":null,\"CHEXGD\":3.0,\"CHEXCD'
+                '\":1.0,\"CHEXKD\":2.0,\"DIPGD'
+                '\":4.0,\"LAJWZ1\":5.0,'
+                '\"LAJWZ2\":6.0,\"LAJWZ3\":7.0,'
+                '\"LAJSL\":8.0,\"CARTYPE\":\"B\",'
+                '\"MAXMZ\":0.0,\"MINPZ\":0.0,'
+                '\"SUOCSC\":0.0,\"IS_SUOC\":\"N'
+                '\",\"LEIB\":\"ranm\",\"YEWZT'
+                '\":2.0},{\"RL_CHELXXBID\":'
+                '\"f27fc037-3d40-495d-9a5b-'
+                'f1a8da549aec\",\"RFIDH\":null,'
+                '\"CHEPH\":\"123456\",\"CHELYS'
+                '\":null,\"CHEXGD\":4.0,\"CHEXCD'
+                '\":2.0,\"CHEXKD\":3.0,\"DIPGD'
+                '\":5.0,\"LAJWZ1\":6.0,'
+                '\"LAJWZ2\":7.0,\"LAJWZ3\":8.0,'
+                '\"LAJSL\":8.0,\"CARTYPE\":\"C\",'
+                '\"MAXMZ\":0.0,\"MINPZ\":0.0,'
+                '\"SUOCSC\":0.0,\"IS_SUOC\":\"N'
+                '\",\"LEIB\":\"ranm\",\"YEWZT'
+                '\":3.0},{\"RL_CHELXXBID\":'
+                '\"1eb6b317-eb74-414d-a751-'
+                '853525bc7aa9\",\"RFIDH\":null,'
+                '\"CHEPH\":\"5678095\",\"CHELYS'
+                '\":null,\"CHEXGD\":0.0,\"CHEXCD'
+                '\":0.0,\"CHEXKD\":0.0,\"DIPGD'
+                '\":0.0,\"LAJWZ1\":0.0,'
+                '\"LAJWZ2\":0.0,\"LAJWZ3\":0.0,'
+                '\"LAJSL\":0.0,\"CARTYPE\":\"C\",'
+                '\"MAXMZ\":56.40,\"M'
+                'INPZ\":17.50,\"SUOCSC\":30.0,'
+                '\"IS_SUOC\":\"N\",\"LEIB\":\"ranm'
+                '\",\"YEWZT\":3.0},'
+                '{\"RL_CHELXXBID\":\"83717f5d-'
+                '1885-44e3-ba2a-9ba6bebd39a1\",'
+                '\"RFIDH\":null,\"CHEPH\":\"'#33945
+                'K1234\",\"CHELYS\":null,\"CHEXGD'
+                '\":null,\"CHEXCD\":null,\"CHEXKD'
+                '\":null,\"DIPGD\":null,'
+                '\"LAJWZ1\":null,\"LAJWZ2\":null,'
+                '\"LAJWZ3\":null,\"LAJSL\":null,'
+                '\"CARTYPE\":\"D\",\"MAXMZ'
+                '\":80.0,\"MINPZ\":17.0,\"SUOCSC'
+                '\":null,\"IS_SUOC\":\"N\",\"LEIB\":'
+                '\"ranm\",\"YEWZT\":2.0},'
+                '{\"RL_CHELXXBID\":\"325a472f-'
+                '5509-4ede-b17d-3bad485fd0e9\",'
+                '\"RFIDH\":null,\"CHEPH\":\"'#33945
+                'B45346\",\"CHELYS\":null,'
+                '\"CHEXGD\":null,\"CHEXCD\":null,'
+                '\"CHEXKD\":null,\"DIPGD\":null,'
+                '\"LAJWZ1\":null,\"LAJWZ2\":null,'
+                '\"LAJWZ3\":null,\"LAJSL\":null,'
+                '\"CARTYPE\":\"D\",\"MAXMZ'
+                '\":90.0,\"MINPZ\":20.0,\"SUOCSC'
+                '\":null,\"IS_SUOC\":\"N\",\"LEIB\":'
+                '\"ranm\",\"YEWZT\":null}]"}')
+              TabOrder = 5
+            end
+            object Button1: TButton
+              Left = 631
+              Top = 82
+              Width = 75
+              Height = 25
+              Caption = 'Test'
+              TabOrder = 6
+              OnClick = Button1Click
+            end
+          end
+        end
+        object RzDBGrid1: TRzDBGrid
+          Left = 0
+          Top = 113
+          Width = 718
+          Height = 352
+          Align = alClient
+          DataSource = DataSource1
+          DragKind = dkDock
+          DrawingStyle = gdsGradient
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          ReadOnly = True
+          TabOrder = 1
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Tahoma'
+          TitleFont.Style = []
+          OnDrawColumnCell = RzDBGrid1DrawColumnCell
+          FramingPreference = fpCustomFraming
+          QuickCompare.Active = True
+        end
+      end
+    end
+  end
+  object M_Load: TRzMemo
+    Left = 8
+    Top = 457
+    Width = 309
+    Height = 3
+    Color = clInfoBk
+    ImeName = #29579#30721#20116#31508#22411#36755#20837#27861'86'#29256' 2012'
+    ReadOnly = True
+    TabOrder = 2
+  end
+  object RzSendMessage1: TRzSendMessage
+    Left = 912
+    Top = 24
+  end
+  object DataSource1: TDataSource
+    DataSet = ClientDataSet1
+    Left = 928
+    Top = 128
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 928
+    Top = 176
+  end
+end

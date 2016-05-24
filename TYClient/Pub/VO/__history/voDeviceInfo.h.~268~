@@ -1,0 +1,295 @@
+#ifndef voDeviceInfoH
+#define voDeviceInfoH
+
+#include "voBaseInfo.h"
+
+class TBalanceInfo : public TBaseDeviceInfo {
+public:
+	TBalanceInfo() {
+		Init();
+	}
+
+	void Init() {
+		FHead_Tag = '\0';
+		FTail_Tag = '\0';
+		FStartPos = 0;
+		FDataLen = 0;
+		FZoom = 1;
+		FIsRev = false;
+		FCycleTime=50;
+		FCnt =8;
+		FdwTimeOuts =3000;
+	}
+
+public:
+	__property unsigned char Head_Tag = {read = FHead_Tag, write = FHead_Tag
+	}; // ---有效数据开头标志
+	__property unsigned char Tail_Tag = {read = FTail_Tag, write = FTail_Tag
+	}; // ---有效数据结尾标志
+	__property int StartPos = {read = FStartPos, write = FStartPos
+	}; // ---标志位开始后第N位为有效计量数据
+	__property int DataLen = {read = FDataLen, write = FDataLen}; // ---有效数据长度
+	__property double Zoom = {read = FZoom, write = FZoom}; // ---数据放大倍数
+	__property bool IsRev = {read = FIsRev, write = FIsRev}; // ---数据是否倒置
+	__property int CycleTime = {read = FCycleTime, write = FCycleTime
+	}; // ---取稳定值的间隔时间,单位ms
+	__property int Cnt = {read = FCnt, write = FCnt}; // ---取稳定值时的取值次数
+	__property DWORD dwTimeOuts = {read = FdwTimeOuts, write = FdwTimeOuts
+	}; // 每次收到仪表数据的时间限制  ms
+
+private:
+	unsigned char FHead_Tag;
+	unsigned char FTail_Tag;
+	int FStartPos;
+	int FDataLen;
+	double FZoom;
+	bool FIsRev;
+	int FCycleTime;
+	int FCnt;
+	DWORD FdwTimeOuts;
+};
+
+class TReaderInfo : public TBaseDeviceInfo {
+public:
+	TReaderInfo(){Init();}
+	void Init(){
+		FDevAddr =0;
+		FAntCnt =0;
+		memset(FAnt,0,sizeof(FAnt));
+	}
+public:
+	__property int DevAddr = {read = FDevAddr, write = FDevAddr
+	}; // ---设备通讯地址(十进制)
+	__property int AntCnt = {read = FAntCnt, write = FAntCnt}; // 天线数
+	__property int Ant[int Index] = {read = GetAnt, write = SetAnt}; // ---Ant口号
+
+private:
+	int FDevAddr;
+	int FAntCnt;
+	int FAnt[8];
+
+	int GetAnt(int Index) {
+		return FAnt[Index];
+	};
+
+	void SetAnt(int Index, int aAnt) {
+		FAnt[Index] = aAnt;
+	};
+};
+
+// --- IO开头控制器,控制道闸 红绿灯 以及读取 定位器信号
+class TIOCtrlInfo : public TBaseDeviceInfo { // ---打开或关闭控制器时一定要判断控制器状态
+public:
+	TIOCtrlInfo(){Init();}
+	void Init(){
+		FUseDZ_Head =false;
+		FUseDZ_Tail =false;
+		FUseHLD_Head =false;
+		FUseHLD_Tail =false;
+		FUseDWQ =false;
+
+		FUpDZCmd_Head =false;
+		FDownDZCmd_Head =false;
+		FUpDZCmd_Tail =false;
+		FDownDZCmd_Tail =false;
+
+		FRedHLDCmd_Head ="";
+		FGreenHLDCmd_Head ="";
+		FCloseHLDCmd_Head ="";
+		FRedHLDCmd_Tail ="";
+		FGreenHLDCmd_Tail ="";
+		FCloseHLDCmd_Tail ="";
+
+		FSelDWQStaCmd ="";
+		FDWQMissEcho_Head ="";
+		FDWQMissEcho_Tail ="";
+		FDWQPassEcho_ALL ="";
+		FDWQMissEcho_ALL ="";
+
+		FdwTimeOuts =2000;
+	}
+public:
+	__property bool UseDZ_Head = {read = FUseDZ_Head, write = FUseDZ_Head
+	}; // ---是否使用前置道闸
+	__property bool UseDZ_Tail = {read = FUseDZ_Tail, write = FUseDZ_Tail
+	}; // ---是否使用后置道闸
+	__property bool UseHLD_Head = {read = FUseHLD_Head, write = FUseHLD_Head
+	}; // ---是否使用前置红绿灯
+	__property bool UseHLD_Tail = {read = FUseHLD_Tail, write = FUseHLD_Tail
+	}; // ---是否使用后置红绿灯
+	__property bool UseDWQ = {read = FUseDWQ, write = FUseDWQ}; // ---是否使用前位器
+
+	// ---指令：16进制的字符串，多条指令可用英文半角逗号隔开
+	__property WideString UpDZCmd_Head = {
+		read = FUpDZCmd_Head, write = FUpDZCmd_Head}; // --- 抬前杆命令
+	__property WideString DownDZCmd_Head = {
+		read = FDownDZCmd_Head, write = FDownDZCmd_Head}; // ---落前杆命令
+	__property WideString UpDZCmd_Tail = {
+		read = FUpDZCmd_Tail, write = FUpDZCmd_Tail}; // ---抬后杆命令
+	__property WideString DownDZCmd_Tail = {
+		read = FDownDZCmd_Tail, write = FDownDZCmd_Tail}; // ---落后杆命令
+
+	__property WideString RedHLDCmd_Head = {
+		read = FRedHLDCmd_Head, write = FRedHLDCmd_Head}; // ---前置红灯命令
+	__property WideString GreenHLDCmd_Head = {
+		read = FGreenHLDCmd_Head, write = FGreenHLDCmd_Head}; // ---前置绿灯命令
+	__property WideString CloseHLDCmd_Head = {
+		read = FCloseHLDCmd_Head, write = FCloseHLDCmd_Head}; // ---前置关灯命令
+	__property WideString RedHLDCmd_Tail = {
+		read = FRedHLDCmd_Tail, write = FRedHLDCmd_Tail}; // ---后置红灯命令
+	__property WideString GreenHLDCmd_Tail = {
+		read = FGreenHLDCmd_Tail, write = FGreenHLDCmd_Tail}; // ---后置绿灯命令
+	__property WideString CloseHLDCmd_Tail = {
+		read = FCloseHLDCmd_Tail, write = FCloseHLDCmd_Tail}; // ---后置关灯命令
+
+	__property WideString SelDWQStaCmd = {
+		read = FSelDWQStaCmd, write = FSelDWQStaCmd}; // ---查询定位器命令
+	__property WideString DWQMissEcho_Head = {
+		read = FDWQMissEcho_Head, write = FDWQMissEcho_Head}; // ---前定位遮挡的反馈
+	__property WideString DWQMissEcho_Tail = {
+		read = FDWQMissEcho_Tail, write = FDWQMissEcho_Tail}; // ---后定位遮挡的反馈
+	__property WideString DWQPassEcho_ALL = {
+		read = FDWQPassEcho_ALL, write = FDWQPassEcho_ALL}; // ---定位全通过的反馈
+	__property WideString DWQMissEcho_ALL = {
+		read = FDWQMissEcho_ALL, write = FDWQMissEcho_ALL}; // ---定位全折挡的反馈
+	__property DWORD dwTimeOuts = {read = FdwTimeOuts, write = FdwTimeOuts
+	}; // 每次收包的时间限制  ms
+
+private:
+	bool FUseDZ_Head;
+	bool FUseDZ_Tail;
+	bool FUseHLD_Head;
+	bool FUseHLD_Tail;
+	bool FUseDWQ;
+
+	WideString FUpDZCmd_Head;
+	WideString FDownDZCmd_Head;
+	WideString FUpDZCmd_Tail;
+	WideString FDownDZCmd_Tail;
+
+	WideString FRedHLDCmd_Head;
+	WideString FGreenHLDCmd_Head;
+	WideString FCloseHLDCmd_Head;
+	WideString FRedHLDCmd_Tail;
+	WideString FGreenHLDCmd_Tail;
+	WideString FCloseHLDCmd_Tail;
+
+	WideString FSelDWQStaCmd;
+	WideString FDWQMissEcho_Head;
+	WideString FDWQMissEcho_Tail;
+	WideString FDWQPassEcho_ALL;
+	WideString FDWQMissEcho_ALL;
+
+	DWORD FdwTimeOuts;
+};
+
+// ---以下三个设备,由上面的统一IO开关类代替,暂不用
+class TDZInfo : public TBaseDeviceInfo {
+public:
+private:
+	// ---起 落 停 指令
+	WideString UP_Cmd;
+	WideString DOWN_Cmd;
+	WideString STOP_Cmd;
+};
+
+class THLDInfo : public TBaseDeviceInfo {
+public:
+private:
+	// ---红 绿 灭 指令
+	WideString Red_Cmd;
+	WideString Green_Cmd;
+	WideString Close_Cmd;
+};
+
+class TDWQInfo : public TBaseDeviceInfo {
+public:
+private:
+	// ---指令
+	WideString sel_Cmd; // ---查询
+	WideString FrontFail_Echo; // ---前置被挡反馈
+	WideString BackFail_Echo; // ---后置被挡反馈
+	WideString AllFail_Echo; // ---全部被挡反馈
+	WideString AllPass_Echo; // ---全部通过反馈
+};
+
+class TLedInfo : public TBaseDeviceInfo {
+public:
+	__property int CardAddr = {read = FCardAddr, write = FCardAddr
+	}; // ---控制卡地址(EQ:配置中从0开始,程序中加1)
+	__property int Width = {read = FWidth, write = FWidth}; // ---LED宽
+	__property int Height = {read = FHeight, write = FHeight}; // ---LED高
+	__property int FontSize = {read = FFontSize, write = FFontSize}; // ---字号
+	__property int SendMode = {read = FSendMode, write = FSendMode
+	}; // ---0:节目 1：时实数据（发图片）
+
+private:
+	int FCardAddr;
+	int FWidth;
+	int FHeight;
+	int FFontSize;
+	int FSendMode;
+};
+
+// ---设备信息汇总类
+class TDeviceInfo {
+public:
+	TDeviceInfo(){Init();}
+	void Init(){
+		FReaderCnt =0;
+		FLedCnt =0;
+		FIoCtrlCnt =0;
+	}
+public:
+	// ---硬件数量
+		__property int ReaderCnt = {read = FReaderCnt, write = FReaderCnt
+	}; // ---现场最多2个主机实现双向	,或1主机2天线实现双向
+	__property int LedCnt = {read = FLedCnt, write = FLedCnt};
+	__property int IoCtrlCnt = {read = FIoCtrlCnt, write = FIoCtrlCnt};
+
+	__property TBalanceInfo BalanceInfo = {
+		read = FBalanceInfo, write = FBalanceInfo};
+	__property TReaderInfo ReaderInfo[int Index] = {
+		read = GetReaderInfo, write = SetReaderInfo};
+	__property TIOCtrlInfo IOCtrlInfo[int Index] = {
+		read = GetIOCtrlInfo, write = SetIOCtrlInfo};
+	__property TLedInfo LedInfo[int Index] = {
+		read = GetLedInfo, write = SetLedInfo};
+
+private:
+
+	int FReaderCnt;
+	int FLedCnt;
+	int FIoCtrlCnt;
+
+	TBalanceInfo FBalanceInfo;
+	TReaderInfo FReaderInfo[4];
+	TIOCtrlInfo FIOCtrlInfo[8];
+	TLedInfo FLedInfo[4];
+
+	TReaderInfo GetReaderInfo(int Index) {
+		return FReaderInfo[Index];
+	};
+
+	void SetReaderInfo(int Index, TReaderInfo aReaderInfo) {
+		FReaderInfo[Index] = aReaderInfo;
+	};
+
+	TIOCtrlInfo GetIOCtrlInfo(int Index) {
+		return FIOCtrlInfo[Index];
+	};
+
+	void SetIOCtrlInfo(int Index, TIOCtrlInfo aIOCtrlInfo) {
+		FIOCtrlInfo[Index] = aIOCtrlInfo;
+	};
+
+	TLedInfo GetLedInfo(int Index) {
+		return FLedInfo[Index];
+	};
+
+	void SetLedInfo(int Index, TLedInfo aLedInfo) {
+		FLedInfo[Index] = aLedInfo;
+	};
+};
+
+#endif

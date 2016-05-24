@@ -1,0 +1,7 @@
+object NmlxDevControl: TNmlxDevControl
+  OldCreateOrder = False
+  DisplayName = 'NmlxDevControl'
+  OnExecute = ServiceExecute
+  Height = 150
+  Width = 215
+end

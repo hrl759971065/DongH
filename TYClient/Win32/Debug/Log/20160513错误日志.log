@@ -1,0 +1,9 @@
+时间:2016/5/13 9:12:47,事件:读写器连接失败:1号读写器停用
+时间:2016/5/13 9:13:09,事件:开元采样机中间库连接对象配置失败:Named Pipes Provider: Could not open a connection to SQL Server [2]. 
+时间:2016/5/13 9:13:09,事件:开元采样机中间库连接失败:开元采样机中间库连接对象配置失败:Named Pipes Provider: Could not open a connection to SQL Server [2]. 
+时间:2016/5/13 9:13:11,事件:开元制样机中间库连接对象配置失败:TCP Provider: 指定的网络名不再可用。
+
+Client unable to establish connection because an error was encountered during handshakes before login. Common causes include client attempting to connect to an unsupported version of SQL Server, server too busy to accept new connections or a resource limitation (memory or maximum allowed connections) on the server.
+时间:2016/5/13 9:13:11,事件:开元制样机中间库连接失败:开元制样机中间库连接对象配置失败:TCP Provider: 指定的网络名不再可用。
+
+Client unable to establish connection because an error was encountered during handshakes before login. Common causes include client attempting to connect to an unsupported version of SQL Server, server too busy to accept new connections or a resource limitation (memory or maximum allowed connections) on the server.

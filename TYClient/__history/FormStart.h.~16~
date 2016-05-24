@@ -1,0 +1,33 @@
+//---------------------------------------------------------------------------
+
+#ifndef FormStartH
+#define FormStartH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include <Vcl.ExtCtrls.hpp>
+#include "RzEdit.hpp"
+//---------------------------------------------------------------------------
+class TFrmStart : public TForm
+{
+__published:	// IDE-managed Components
+	TButton *Button1;
+	TTimer *tmr1;
+	TRzMemo *RzMemo1;
+	TRzMemo *RzMemo2;
+	TButton *Button2;
+	void __fastcall FormShow(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall tmr1Timer(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Button1Click(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TFrmStart(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TFrmStart *FrmStart;
+//---------------------------------------------------------------------------
+#endif

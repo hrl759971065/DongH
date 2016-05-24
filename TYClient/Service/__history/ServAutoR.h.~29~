@@ -1,0 +1,26 @@
+//---------------------------------------------------------------------------
+
+#ifndef ServAutoRH
+#define ServAutoRH
+#include "ServJiek.h"
+//---------------------------------------------------------------------------
+
+class TServAutoR : public TServJiek{
+public:
+	TServAutoR();
+	~TServAutoR();
+protected:
+	void __fastcall AutoBaseProc();
+
+	void __fastcall AutoProc_ZZRC();
+	void __fastcall AutoProc_ParkingCR();
+	void __fastcall AutoProc_QCH();
+	void __fastcall AutoProc_MCCR();
+	void __fastcall AutoProc_CYJ();
+private:
+	bool _bInitial;
+	int _FLowID[2];
+	int _ErrCnt;
+};
+
+#endif

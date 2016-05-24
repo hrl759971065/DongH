@@ -1,0 +1,286 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{A4994777-0B44-4FE7-A062-85FA35F91312}</ProjectGuid>
+			<ProjectVersion>13.4</ProjectVersion>
+			<FrameworkType>VCL</FrameworkType>
+			<MainSource>NmlxDevCtrl.cpp</MainSource>
+			<Base>True</Base>
+			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Platform Condition="'$(Platform)'==''">Win32</Platform>
+			<TargetedPlatforms>1</TargetedPlatforms>
+			<AppType>Application</AppType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+			<Base_Win32>true</Base_Win32>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+			<Cfg_1_Win32>true</Cfg_1_Win32>
+			<CfgParent>Cfg_1</CfgParent>
+			<Cfg_1>true</Cfg_1>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+			<Cfg_2_Win32>true</Cfg_2_Win32>
+			<CfgParent>Cfg_2</CfgParent>
+			<Cfg_2>true</Cfg_2>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<UsingDelphiRTL>true</UsingDelphiRTL>
+			<ProjectType>Application</ProjectType>
+			<PackageImports>DataSnapIndy10ServerTransport;bindcompfmx;fmx;rtl;dbrtl;IndySystem;DbxClientDriver;bindcomp;inetdb;DBXInterBaseDriver;DataSnapCommon;DataSnapClient;DataSnapServer;DataSnapProviderClient;xmlrtl;ibxpress;DbxCommonDriver;IndyProtocols;DBXMySQLDriver;dbxcds;soaprtl;bindengine;DBXOracleDriver;CustomIPTransport;dsnap;DBXInformixDriver;fmxase;IndyCore;DBXFirebirdDriver;inet;fmxobj;inetdbxpress;DBXSybaseASADriver;fmxdae;IPIndyImpl;dbexpress;$(PackageImports)</PackageImports>
+			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+			<Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
+			<IncludePath>..\Pub\;..\;..\Pub\Encrypt\;..\SOAP\Invoke\;..\Pub\VO\;..\Pub\;..\Pub\jsoncpp-src-0.5.0\include\json\;..\Service\;..\SOAP\WebService\;$(IncludePath)</IncludePath>
+			<AllPackageLibs>vcl.lib;rtl.lib;xmlrtl.lib;soaprtl.lib;inet.lib;dsnap.lib;dbrtl.lib;vcldb.lib</AllPackageLibs>
+			<ILINK_LibraryPath>..\Pub\;..\;..\Pub\Encrypt\;..\SOAP\Invoke\;..\Pub\VO\;..\Pub\;..\Pub\jsoncpp-src-0.5.0\include\json\;..\Service\;..\SOAP\WebService\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+			<DynamicRTL>true</DynamicRTL>
+			<UsePackages>true</UsePackages>
+			<IntermediateOutputDir>.\$(Platform)\$(Config)</IntermediateOutputDir>
+			<FinalOutputDir>.\$(Platform)\$(Config)</FinalOutputDir>
+			<BCC_wpar>false</BCC_wpar>
+			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+			<BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base_Win32)'!=''">
+			<PackageImports>vcldbx;RaizeComponentsVclDb;TeeDB;RaizeComponentsVcl;Rave100VCL;vclib;Tee;inetdbbde;DBXOdbcDriver;VictorComm32;crcontrols160;DBXSybaseASEDriver;bsfcb2012;vclimg;dacfmx160;intrawebdb_120_160;vclactnband;FMXTee;TeeUI;vcldsnap;bindcompvcl;vcldb;dac160;vclie;unidacvcl160;vcltouch;Intraweb_120_160;DBXDb2Driver;bcbsmp;websnap;dacvcl160;vclribbon;VclSmp;vcl;DataSnapConnectors;CloudService;DBXMSSQLDriver;CodeSiteExpressPkg;FmxTeeUI;dsnapcon;unidac160;unidacfmx160;vclx;webdsnap;bdertl;adortl;bcbie;$(PackageImports)</PackageImports>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<UsePackages>false</UsePackages>
+			<IncludePath>$(BDSINCLUDE)\windows\vcl;..\UI\;$(IncludePath)</IncludePath>
+			<DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+			<ILINK_LibraryPath>E:\Source Code nmlx\DongHua\DonghuaSrc\TYClient\Pub\jsoncpp-src-0.5.0\lib\bcb\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<DynamicRTL>false</DynamicRTL>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+			<_TCHARMapping>wchar_t</_TCHARMapping>
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<Defines>_DEBUG;$(Defines)</Defines>
+			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+			<BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+			<DCC_Define>DEBUG</DCC_Define>
+			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+			<TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+			<BCC_StackFrames>true</BCC_StackFrames>
+			<ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+			<TASM_Debugging>Full</TASM_Debugging>
+			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+			<ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+			<ILINK_LibraryPath>..\Pub\jsoncpp-src-0.5.0\lib\bcb;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<LinkPackageStatics>vcl.lib;rtl.lib;xmlrtl.lib;soaprtl.lib;inet.lib;dsnap.lib;dbrtl.lib;vcldb.lib</LinkPackageStatics>
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<FinalOutputDir>..\Win32\Debug\</FinalOutputDir>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Defines>NDEBUG;$(Defines)</Defines>
+			<TASM_Debugging>None</TASM_Debugging>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+			<FinalOutputDir>..\Win32\Release\</FinalOutputDir>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+		</PropertyGroup>
+		<ItemGroup>
+			<CppCompile Include="..\Pub\Basic.cpp">
+				<DependentOn>..\Pub\Basic.h</DependentOn>
+				<BuildOrder>12</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Pub\Encrypt\AES.cpp">
+				<DependentOn>..\Pub\Encrypt\AES.h</DependentOn>
+				<BuildOrder>21</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Pub\Encrypt\Base64.cpp">
+				<DependentOn>..\Pub\Encrypt\Base64.h</DependentOn>
+				<BuildOrder>22</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Pub\Encrypt\DES.cpp">
+				<DependentOn>..\Pub\Encrypt\DES.h</DependentOn>
+				<BuildOrder>23</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Pub\Encrypt\MD5.cpp">
+				<DependentOn>..\Pub\Encrypt\MD5.h</DependentOn>
+				<BuildOrder>24</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Pub\JsonBase.cpp">
+				<BuildOrder>13</BuildOrder>
+			</CppCompile>
+			<None Include="..\Pub\jsoncpp-src-0.5.0\include\json\json.h">
+				<BuildOrder>11</BuildOrder>
+			</None>
+			<CppCompile Include="..\Pub\Ping.cpp">
+				<DependentOn>..\Pub\Ping.h</DependentOn>
+				<BuildOrder>14</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Pub\Thread_LedSend.cpp">
+				<DependentOn>..\Pub\Thread_LedSend.h</DependentOn>
+				<BuildOrder>27</BuildOrder>
+			</CppCompile>
+			<None Include="..\Pub\VO\voBangInfo.h">
+				<BuildOrder>15</BuildOrder>
+			</None>
+			<None Include="..\Pub\VO\voBaseInfo.h">
+				<BuildOrder>16</BuildOrder>
+			</None>
+			<None Include="..\Pub\VO\voConst.h">
+				<BuildOrder>17</BuildOrder>
+			</None>
+			<None Include="..\Pub\VO\voDeviceInfo.h">
+				<BuildOrder>18</BuildOrder>
+			</None>
+			<None Include="..\Pub\VO\voFuncInfo.h">
+				<BuildOrder>19</BuildOrder>
+			</None>
+			<CppCompile Include="..\Service\JsonReq.cpp">
+				<DependentOn>..\Service\JsonReq.h</DependentOn>
+				<BuildOrder>4</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Service\JsonRet.cpp">
+				<DependentOn>..\Service\JsonRet.h</DependentOn>
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Service\ServAutoR.cpp">
+				<DependentOn>..\Service\ServAutoR.h</DependentOn>
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Service\ServBase.cpp">
+				<DependentOn>..\Service\ServBase.h</DependentOn>
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Service\ServDevCtrl.cpp">
+				<DependentOn>..\Service\ServDevCtrl.h</DependentOn>
+				<BuildOrder>8</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Service\Service.cpp">
+				<DependentOn>..\Service\Service.h</DependentOn>
+				<BuildOrder>9</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Service\ServJiek.cpp">
+				<DependentOn>..\Service\ServJiek.h</DependentOn>
+				<BuildOrder>10</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\SOAP\Invoke\NmlxService.cpp">
+				<DependentOn>..\SOAP\Invoke\NmlxService.h</DependentOn>
+				<BuildOrder>20</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\SOAP\WebService\NmlxDeviceControl.cpp">
+				<DependentOn>..\SOAP\WebService\NmlxDeviceControl.h</DependentOn>
+				<BuildOrder>26</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\SOAP\WebService\WebModuleUnit1.cpp">
+				<Form>WebModule1</Form>
+				<DesignClass>TWebModule</DesignClass>
+				<DependentOn>..\SOAP\WebService\WebModuleUnit1.h</DependentOn>
+				<BuildOrder>3</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="..\Thread_Run.cpp">
+				<DependentOn>..\Thread_Run.h</DependentOn>
+				<BuildOrder>25</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="NmlxDevCtrl.cpp">
+				<BuildOrder>0</BuildOrder>
+			</CppCompile>
+			<ResFiles Include="NmlxDevCtrl.res">
+				<BuildOrder>1</BuildOrder>
+			</ResFiles>
+			<CppCompile Include="Unit1.cpp">
+				<Form>NmlxDevControl</Form>
+				<FormType>dfm</FormType>
+				<DesignClass>TService</DesignClass>
+				<DependentOn>Unit1.h</DependentOn>
+				<BuildOrder>2</BuildOrder>
+			</CppCompile>
+			<FormResources Include="Unit1.dfm"/>
+			<FormResources Include="..\SOAP\WebService\WebModuleUnit1.dfm"/>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+			<Borland.ProjectType>Application</Borland.ProjectType>
+			<BorlandProject>
+				<CPlusPlusBuilder.Personality>
+					<Source>
+						<Source Name="MainSource">NmlxDevCtrl.cpp</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">0</VersionInfo>
+						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="Build">0</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">2052</VersionInfo>
+						<VersionInfo Name="CodePage">936</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\bcboffice2k160.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\bcbofficexp160.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k160.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dclofficexp160.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
+					<ProjectProperties>
+						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+						<ProjectProperties Name="ManagePaths">True</ProjectProperties>
+						<ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+					</ProjectProperties>
+				</CPlusPlusBuilder.Personality>
+				<Deployment/>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')" Project="$(BDS)\Bin\CodeGear.Cpp.Targets"/>
+		<Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+	</Project>

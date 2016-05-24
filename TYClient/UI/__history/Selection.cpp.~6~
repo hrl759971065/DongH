@@ -1,0 +1,12 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "Selection.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+TSelection:: __fastcall TSelection(TComponent* Owner)
+{
+
+}

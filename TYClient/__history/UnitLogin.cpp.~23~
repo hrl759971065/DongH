@@ -1,0 +1,56 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "UnitLogin.h"
+#include "Dlg_Main.h"
+#include "Service.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "RzPanel"
+#pragma link "RzLabel"
+#pragma link "RzEdit"
+#pragma link "RzCmboBx"
+#pragma link "RzButton"
+#pragma resource "*.dfm"
+TFormLogin *FormLogin;
+//---------------------------------------------------------------------------
+__fastcall TFormLogin::TFormLogin(TComponent* Owner)
+	: TForm(Owner)
+{
+	if(6 ==global_Service._sysInfo.NodeID){
+
+        this->Hide();
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormLogin::RzButton1Click(TObject *Sender)
+{
+	if(C_User->Text.Trim().IsEmpty()){
+
+		ShowMessage(L"ÇëÊäÈëÓÃ»§Ãû\r\n");
+		return;
+	}
+	if(E_Pass->Text.Trim().IsEmpty()){
+
+		ShowMessage(L"ÇëÊäÈëÃÜÂë\r\n");
+		return;
+	}
+	if(global_Service.Login_pt(C_User->Text.Trim(),E_Pass->Text.Trim())){
+
+    	FormMain->ShowModal();
+		Close();
+	}else{
+        ShowMessage(L"µÇÂ¼Ê§°Ü:"+global_Service.GetLastErrS());
+	}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormLogin::RzButton2Click(TObject *Sender)
+{
+	Close();
+}
+//---------------------------------------------------------------------------
+

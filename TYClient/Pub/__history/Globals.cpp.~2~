@@ -1,0 +1,15 @@
+//---------------------------------------------------------------------------
+#include <vcl.h>
+
+#pragma hdrstop
+
+#include "Globals.h"
+//#include "CommonMethod.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+//---公共变量
+
+HINSTANCE m_Hinst_JiL;
+
+

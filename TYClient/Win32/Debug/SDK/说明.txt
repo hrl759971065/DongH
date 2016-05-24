@@ -1,0 +1,2 @@
+如果调用 仰邦的 BX_IV.dll,borlndmm.dll需放到exe的目录下
+EQ_2008ini,

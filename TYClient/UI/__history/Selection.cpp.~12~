@@ -1,0 +1,17 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "Selection.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+__fastcall TSelection::TSelection(TComponent* Owner):TRzPanel(Owner)
+{
+
+}
+
+__fastcall TSelection::~TSelection()
+{
+
+}

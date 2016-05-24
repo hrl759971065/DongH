@@ -1,0 +1,539 @@
+#ifndef voBaseInfoH
+#define voBaseInfoH
+
+#include <Classes.hpp>
+#include "voConst.h"
+
+class THostInfo {
+public:
+	THostInfo() {
+		Init();
+	}
+
+	void Init() {
+		BaseBoardID = "";
+		ProcessorID = "";
+		HardDiskID = "";
+	}
+
+public:
+	WideString BaseBoardID ;
+	WideString ProcessorID ;
+	WideString HardDiskID ;
+};
+
+class TVersionInfo {
+public:
+	TVersionInfo() {
+		Init();
+	}
+
+	void Init() {
+		FilePathName = "";
+		FileDescription = "";
+		FileVersion = "";
+	}
+
+public:
+	WideString FilePathName;
+	WideString FileDescription ;
+	WideString FileVersion ;
+};
+
+class TDBConfig {
+public:
+	TDBConfig() {
+		Init();
+	}
+
+	void Init() {
+		IsUse =true;
+		Provider = "";
+		User = "";
+		Pass = "";
+		Server = "";
+		Database = "";
+		Port = 0;
+		IsPool = false;
+		IsDirect = true;
+		AccessType = 0;
+	}
+
+public:
+	bool IsUse;
+	WideString Provider ;
+	WideString User ;
+	WideString Pass ;
+	WideString Server ;
+	WideString Database ;
+	long Port ;
+	bool IsPool ;
+	bool IsDirect ;
+	int AccessType; // ---数据访问方式, 0:直接访问远程数据库 1:DataSnap 2:Rest 3:WebService
+};
+
+class TSysInfo { // ---主Exe程序信息
+
+public:
+	TSysInfo() {
+		Init();
+	}
+
+	void Init() {
+		SysID = "";
+		SysName = "";
+		LocalIP = "";
+		CpuSN = "";
+		BiosSN = "";
+		MachineCode = "";
+		ChkMachineCode = "";
+		UseMachineCode = false;
+		UseVerChk = false;
+		PaidCnt = 0;
+		YanpCnt = 0;
+		CaiyjCnt = 0;
+		BangCnt = 0;
+		NodeID =-1;
+		Title ="";
+		Location ="";
+		TriggerWeight =0;
+		QCHMode =3;
+		IsUseCy =false;
+		IsUseXM =false;
+		MinMZ =0;
+		MinPZ =0;
+		MaxPZ =0;
+		pt_JiekUrl ="";
+		IsOpenWserv =false;
+	}
+
+public:
+	 WideString SysID ;
+	 WideString SysName ;
+	 WideString LocalIP ;
+	 WideString CpuSN ;
+	 WideString BiosSN ;
+	 WideString MachineCode ;
+	 WideString ChkMachineCode ;
+	 bool UseMachineCode ;
+	 bool UseVerChk ;
+	 int PaidCnt ;
+	 int YanpCnt ;
+	 int CaiyjCnt ;
+	 int BangCnt ;
+	 TDBConfig DBConfig ;
+
+	 int NodeID ; //---功能节点 0 自助发卡 1停车场 2 采样 3计量 4
+	 int TingID	;	//--- 0:停车场入口 1：停车场出口
+	 String CYJNO;  //---采样机别称
+	 String Title ;	//---程序标题
+	 String Location ;	//---地点命名
+
+	 int TriggerWeight ;  //---地磅触发重量 Kg
+	 int QCHMode ;	//---汽车衡模式:1重磅 2轻磅 3轻重通用
+	 bool IsUseCy ;   //---过重时是否判断采样
+	 bool IsUseXM ;   //---回皮时是否判断卸煤
+	 int MinMZ ;  //---最小毛重 Kg
+	 int MinPZ ;	//---最小皮重
+	 int MaxPZ ;	//---最大皮重
+	 AnsiString JiekIP ;	//---接口IP
+	 AnsiString JiekPort ;	//---接口端口
+	 String pt_JiekUrl;
+	 bool IsOpenWserv;	//---是否开放WebService服务
+
+};
+
+// ---串口信息
+class TFrameSet { // ---数据包头尾设置
+
+public:
+	TFrameSet() {
+		Init();
+	}
+
+	void Init() {
+		DoubleFrameMark = false;
+		FrameHead = 0x0;
+		FrameTail = 0x0;
+		FrameCtrl = 0x0;
+	}
+
+public:
+	 bool DoubleFrameMark ;
+	 unsigned char FrameHead ;
+	 unsigned char FrameTail;
+	 unsigned char FrameCtrl;
+};
+
+class TCommCfg { // ---串口配置
+
+public:
+	TCommCfg() {
+		Init();
+	}
+
+	void Init() {
+		ComNum = 0;
+		dwBaudRate = 0;
+		Chk = 'N';
+		DataBits = 8;
+		Stops = 0;
+		UsePkg = false;
+		ComPkgType = 0; // 启用数据包时需配置
+		PkgInterval = 50;
+		DisWrite = false;
+	}
+
+public:
+	 int ComNum ;
+	 DWORD dwBaudRate ;
+	 char Chk ;
+	 BYTE DataBits ;
+	 BYTE Stops ;
+	 bool UsePkg;
+	 int ComPkgType;  // 启用数据包时需配置
+	 TFrameSet FrameSet ;
+	 long PkgInterval ;
+	 bool DisWrite;
+};
+
+class TNetCfg { // ---网络配置
+
+public:
+	TNetCfg() {
+		Init();
+	}
+
+	void Init() {
+		IP = "";
+		Port = 0;
+		UserName = "";
+		Pass = "";
+	}
+
+public:
+	 WideString IP ;
+	 int Port ;
+	 WideString UserName ;
+	 WideString Pass ;
+};
+
+class TBaseDeviceInfo { // ---设置基础信息
+
+public:
+	TBaseDeviceInfo() {
+		Init();
+	}
+	void Init() {
+		Model = "";
+		Use = false;
+		CommMode = 0;
+		DevAddr =0;
+	}
+public:
+	 WideString Model ; // ---型号:通用
+	 bool Use ; // ---是否使用
+	 TCommCfg CommCfg; // ---0：串口 1：网口
+	 TNetCfg NetCfg ;
+	 int CommMode ;
+	 int DevAddr ; // ---设备通讯地址(十进制)
+};
+
+// ---识别卡信息
+class TCardInfo {
+public:
+	TCardInfo() {
+		Init();
+	}
+
+	void Init() {
+		Cnts = 0;
+		for (int i = 0; i < MaxCard; i++) {
+			CardID[i] = "";
+		}
+		for (int i = 0; i < MaxCard; i++) {
+			UserData_6C[i] = "";
+		}
+		memset(Ant, 0, sizeof(Ant));
+
+		memset(&Sector,0,sizeof(Sector));
+		memset(ICCardID,0,sizeof(ICCardID));
+		memset(ICCardID_Hex,0,sizeof(ICCardID_Hex));
+	}
+
+public:
+	int Cnts ; 	// 读到的卡数
+	WideString CardID[MaxCard]; 	// MaxCard 张卡片
+	WideString UserData_6C[MaxCard]; 	// MaxCard 张卡片
+	int Ant[MaxCard] ; 	// ---被哪个天线识别
+
+//---IC卡信息
+	struct Sector_struct {
+		unsigned char Block[4][16];	//---每个扇区4个块,每个块16字节
+	};
+	Sector_struct Sector[16];	//---16个扇区
+
+	unsigned char ICCardID[32];
+	unsigned char ICCardID_Hex[64];
+};
+
+//---获取平台采样信息
+class TCaiyInfo {
+public:
+	TCaiyInfo() {
+		Init();
+	}
+
+	void Init() {
+
+		CaiyBH = "";
+		CaiyDS = "";
+		GongYS = "";
+		CaiyLX = "";
+	}
+
+public:
+	WideString CaiyBH;
+	UTF8String GongYS;
+	UTF8String CaiyLX;
+	WideString CaiyDS;
+
+
+};
+
+
+
+// ---车辆信息及状态
+class TCarInfo {
+public:
+	TCarInfo() {
+		Init();
+	}
+
+	void Init() {
+		CardID = "";
+		NumPlate = "";
+		XCB = "";
+		NumPlate_Guac = "";
+		ChedMC = "";
+		IsLock = false;
+		RoundFlag = 0;
+
+		MaxM = 0;
+		MinM = 0;
+		MaxP = 0;
+		MinP = 0;
+		carType = "";
+		carType_ID = "";
+
+		ReaderIndex = 0;
+		AntIndex = 0;
+
+		Gongys = "";
+		Meik = "";
+		Pinz = "";
+		Yscd = "";
+		IsCy = -1;
+		IsWeight = -1;
+		IsTare = -1;
+		Legth = 0;
+		Width = 0;
+		Dipg = 0;
+		Lajs = 0;
+		memset(Ljwz, 0, sizeof(Ljwz));
+		Leib =0;
+		YewZT =0;
+		BiaoZ =0;
+		GuaStart=0;
+		GuaEnd=0;
+		ICCardID ="";
+	}
+
+public:
+	WideString CardID; // 卡号
+	WideString ICCardID;
+	WideString NumPlate; // 车号
+	WideString XCB; // 对应card_plate中的 行车本号
+	WideString NumPlate_Guac; // 对应card_plate中的 挂车号
+	WideString ChedMC; // 对应card_plate中的 车队名
+	int IsLock; // 锁车状态 0未锁 1被锁
+	int RoundFlag; // 车辆状态标志	老系统 1已过重 0其它
+	// 毛皮上下限 吨
+	double MaxM;
+	double MinM;
+	double MaxP;
+	double MinP;
+	double BiaoZ;	//---标准载重量
+	WideString carType; // 对应card_plate中的 自卸 平板等
+	WideString carType_ID; // 对应card_plate中的 ABCDEF车型
+
+	int ReaderIndex; // 主机编号(被哪个主机识别)
+	int AntIndex; // 天线编号(被哪个天线所识别)
+
+	WideString Gongys; // ---供应商
+	WideString Meik; // ---煤矿
+	WideString Pinz; // ---品种
+	WideString Yscd; // ---运输车队
+	int IsCy; // ---0未采样 1已采样
+	int IsWeight; // ---0未过重 1已过重
+	int IsTare; // ---0未回皮 1已回皮
+	TDateTime PPSJ; // ---匹配时间
+
+	// ---采样用数据
+	int Legth;
+	int Width;
+	int Dipg;
+	int Lajs;
+	int Ljwz[12];
+	int Leib;	//--- 0:入厂煤 1:其它 具体看平台的约定
+	int YewZT;	//---业务状态ID,具体参考平台约定
+	int GuaStart;
+	int GuaEnd;
+};
+
+//----采样信息
+struct CarSamplingData
+{
+	char SePicModPath[300];
+	char PicCarnoPath[300];
+	int SimplingPoint;
+	char SimplingTarget[100];
+	int SetBucketWeight;
+	int SetBucketNo;
+	char SamplingPerson[100];
+    char SimplingLocation[100];
+    char SimplingType[10];
+	char SimplingStartTime[20];
+	char SimplingEndTime[20];
+	char SupplierCode[100];
+    char BatchInfoId[40];
+    char SimplingCode[100];
+    char VehicleNo[50];
+    char SerialNo[30];
+    double CarLength;
+    double CarWidth;
+    double ChassisHeight;
+    double EmptyBucketWeight;
+
+	double TrailerSimplingPoint;
+    double Vehiclecarlength;
+    double Vehiclecarwidth;
+    double Chassisheightone;
+    double Clearance;
+    char TrailerSimplingLocation[100];
+    char TrailerSimplingTarget[100];
+};
+
+//---集样罐信息
+struct SamperCollectionData
+{
+	int  BucketWeight;
+	int BucketNo;
+	int GrandBucketPoint;
+	char SamplingCode[50];
+	char SimplingLocation[100];
+	char SimpLingUpdateTime[20];
+};
+
+//---磅单信息
+class TBangdInfo{
+public:
+	TBangdInfo(){Init();};
+	void Init(){
+		Title ="";
+		Numplate ="";
+		Meik ="";
+		Gongys ="";
+		Pinz ="";
+		Yunsdw ="";
+		Maozsj ="";
+        Pizsj ="";
+		Maoz =0;
+		Piz =0;
+		Jingz =0;
+		Koug =0;
+		Kous =0;
+		Kouz =0;
+		Printer ="";
+		PrtTime ="";
+	}
+public:
+	AnsiString Title;
+	AnsiString Numplate;
+	AnsiString Meik;
+	AnsiString Gongys;
+	AnsiString Pinz;
+	AnsiString Yunsdw;
+	AnsiString Maozsj;
+	AnsiString Pizsj;
+	double Maoz;
+	double Piz;
+	double Jingz;
+	double Koug;
+	double Kous;
+	double Kouz;
+	AnsiString Printer;
+	AnsiString PrtTime;
+};
+
+typedef struct UDP_PACKED_TMP_STRUCT{
+    //---本地配置
+    BYTE sLocation[16];     //---本地名
+	BYTE sHostIP[16];   	//---主机IP
+	//---天线配置
+	BYTE sReaderIP[16]; 	//---天线IP
+	BYTE nReaderAnt;    	//---天线端口
+	BYTE bConn; 			//---天线是否连接
+	BYTE sCar[12];  		//---当前车牌号
+	BYTE sCurrStatus[32];   //---当前状态
+	//---地磅仪表
+	BYTE sMeterCom;   		//---串口号
+	BYTE sRealValue[4]; 	//---地磅值
+    //---道闸
+    BYTE nDzCom;
+	BYTE bDzStatus;  		//---0落 1抬
+	//---交通灯
+	BYTE nHldCom;    		//---红绿灯串口号
+	BYTE nHldStatus; 		//---0红 1绿
+	//红外对射状态
+    BYTE  nDwqCom;   		//---定位器串口号
+    BYTE bFront;            //---0挡 1通
+    BYTE bBack;
+}UDP_PACKED_TMP,*pUDP_PACKED_TMP;
+
+typedef struct tagDATAPKG{
+
+	char *data;
+	int  nLen;
+}DATAPKG,*pDATAPKG;
+
+typedef struct struct_DataSetInfo{
+
+	int nRecordCount;   //记录数
+	int nCols;  //列数
+	int nCursor;    //当前游标
+}DataSetInfo,*pDataSetInfo;
+
+//---获取平台当前流程位置与下一流程位置信息
+class TCaiyInfo {
+public:
+	TCaiyInfo() {
+		Init();
+	}
+
+	void Init() {
+
+		CaiyBH = "";
+		CaiyDS = "";
+		GongYS = "";
+		CaiyLX = "";
+	}
+
+public:
+	WideString Next_Location;
+	WideString Next_Station;
+	WideString Current_Location;
+	WideString Current_Station;
+};
+
+#endif

@@ -1,0 +1,16 @@
+//---------------------------------------------------------------------------
+
+#ifndef SelectionH
+#define SelectionH
+
+#include "RzPanel.hpp"
+//---------------------------------------------------------------------------
+
+//---—°‘Ò√Ê∞Â
+class TSelection : public TRzPanel{
+public:
+	__fastcall TSelection(TComponent* Owner);
+	__fastcall ~TSelection();
+};
+
+#endif

@@ -1,0 +1,28 @@
+object FrmStart: TFrmStart
+  Left = 439
+  Top = 219
+  BorderStyle = bsNone
+  Caption = 'FrmStart'
+  ClientHeight = 226
+  ClientWidth = 463
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object tmr1: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = tmr1Timer
+    Left = 32
+    Top = 8
+  end
+end

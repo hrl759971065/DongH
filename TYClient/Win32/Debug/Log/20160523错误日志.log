@@ -1,0 +1,10 @@
+时间:2016/5/23 11:04:47,事件:SaveZhiybjData_pt,服务报异常:Unable to load WSDL File/Location: http://127.0.0.1:8001/Webservices/NmlxService.asmx?WSDL.  Error [要求操作句柄的状态错误 - URL:http://127.0.0.1:8001/Webservices/NmlxService.asmx?WSDL - SOAPAction:""]
+时间:2016/5/23 11:04:47,事件:SaveZhiybjData_pt@SamUnloadProc:SaveZhiybjData_pt,服务报异常:Unable to load WSDL File/Location: http://127.0.0.1:8001/Webservices/NmlxService.asmx?WSDL.  Error [要求操作句柄的状态错误 - URL:http://127.0.0.1:8001/Webservices/NmlxService.asmx?WSDL - SOAPAction:""]
+时间:2016/5/23 11:06:28,事件:UploadXlwcxx_pt,服务报异常:Unable to load WSDL File/Location: http://127.0.0.1:8001/Webservices/NmlxService.asmx?WSDL.  Error [禁用 DTD。
+
+Line: 1
+<!DOCTYPE html>]
+时间:2016/5/23 11:06:28,事件:UploadXlwcxx_pt@SamUnloadProc:UploadXlwcxx_pt,服务报异常:Unable to load WSDL File/Location: http://127.0.0.1:8001/Webservices/NmlxService.asmx?WSDL.  Error [禁用 DTD。
+
+Line: 1
+<!DOCTYPE html>]

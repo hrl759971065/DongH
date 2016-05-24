@@ -1,0 +1,98 @@
+#ifndef LX_DBH
+#define LX_DBH
+
+#include "Globals.h"
+#include <DB.hpp>
+#include <vector.h>
+
+#ifdef DLL_EXPORT
+#define DLL_API extern "C" __declspec(dllexport)
+#else
+#define DLL_API extern "C" __declspec(dllimport)
+#endif
+
+//---------------------------------------------------------------------------
+
+/*typedef struct {
+	BYTE op;
+	DWORD_PTR dwValue;
+} OPCODE, *POPCODE; */
+enum TParamDirect { spUnknown, spInput, spOutput, spInputOutput, spReturnValue }; 	//---存储过程的参数类型
+typedef struct{
+
+	TParamDirect 	parmType;	//---参数类型:输入 输出等
+	TFieldType		fieldType;	//---传值类型
+	char			argName[32];//---参数名
+	wchar_t			argVal[128]; //---参数值
+}SPARAM;
+
+typedef vector<SPARAM> SpArg;
+
+
+class ILX_DB{
+
+public:
+	virtual ~ILX_DB(void){} //对于基类，显示定义虚析构函数是个好习惯
+
+	virtual bool 		PutConnStrInfo(DBCONFIG)=0;
+	virtual bool 		Conn()=0;
+	virtual bool 		IsConn()=0;
+	virtual void 		Disconn()=0;
+
+	virtual void 		GetDataSet(WideString SelectSQL)=0;
+	virtual OleVariant 	GetDatasetEX(WideString SelectSQL) =0;
+	virtual	bool		GetDataSource(WideString SelectSQL,TDataSource *ds) =0;
+
+	virtual bool 		SaveDsXML(WideString FileName)=0;
+	virtual bool 		SaveDsXML(TStream* Stream)=0;
+	virtual WideString 	GetLastErr()=0;
+
+	virtual void 		CloseDataset()=0;
+
+	//TField:在不同版本的的BCB间传递时,会遇到错误,为了兼容早期版本,使用WideString
+	virtual TField* 	FieldAsName(int nRows, WideString Name)=0;
+	virtual WideString 	FieldAsName_B6(int nRows, WideString Name) =0;
+	virtual void 		FieldAsName(int nRows, WideString Name, Variant FieldVal)=0;
+	virtual void 		FieldAsName_B6(int nRows, WideString Name, WideString FieldVal) =0;
+	virtual void 		FieldAsName(WideString Name, Variant FieldVal)=0;
+	virtual void 		FieldAsName_B6(WideString Name, WideString FieldVal) =0;   ////B6以上通用
+	virtual TField* 	FieldAsNum(int nRows, int nCols) =0;
+	virtual WideString 	FieldAsNum_B6(int nRows, int nCols)=0;
+	virtual void 		FieldAsNum(int nRows, int nCols,Variant FieldVal)=0;
+	virtual void 		FieldAsNum_B6(int nRows, int nCols,WideString FieldVal) =0;
+	virtual void 		FieldAsNum(int nCols,Variant FieldVal)=0;
+	virtual void 		FieldAsNum_B6(int nCols,WideString FieldVal) =0;
+
+	virtual void 		EditDS()=0;
+	virtual void 		AppendDS()=0;
+	virtual void 		PostDS()=0;
+	virtual bool 		SQLExcute(WideString Sql)=0;
+	virtual int 		SQLExcute_EX(WideString Sql)=0;
+	virtual void 		BeginTransaction(int Index)=0;
+	virtual void 		CommitTran(int Index)=0;
+	virtual void 		RollbackTran(int Index)=0;
+
+	//原参数为 TStringList *,为解决不同BCB版本间的兼容问题,所以将参数改成了
+	//WideString,调用后,再将WideString的值赋给 TStringList *的Text属性即可
+	virtual void 		GetTableNames(TStrings* TabList, bool AllTables) =0;    //2010及以上使用(UniCode)
+	virtual void 		GetTableNames(WideString &TabList, bool AllTables = false)=0;	//BCB通用
+	virtual void 		GetFieldNames(TStrings *List) =0; 	//2010及以上使用(UniCode)
+	virtual void 		GetFieldNames(WideString &List)=0;     //BCB通用
+	virtual bool 		StoredProcExcute(WideString spName,SpArg *pSparg)=0;
+	virtual bool 		ExecuteSqlTran(TStrings *List) =0;	//2010及以上使用(UniCode)
+	virtual bool 		ExecuteSqlTran(WideString SqlList) =0; //BCB通用
+	virtual int  		VersionUpdate(TVersonInfo VerInfo) =0;
+	virtual bool 		DownLoadFile(TVersonInfo VerInfo) =0;
+	virtual bool 		UpLoadFile(TVERSION_INFO VerInfo) =0;
+
+	__property			DataSetInfo DSInfo = { read =fGetDsInfo};
+
+private:
+	virtual DataSetInfo fGetDsInfo()=0;//返回GetDataSet后,得到的数据集信息
+};
+
+typedef ILX_DB* (__stdcall *pFnGetILX_DB)(void);
+
+extern "C" __declspec(dllexport) ILX_DB* __stdcall GetILX_DB(void);
+
+#endif

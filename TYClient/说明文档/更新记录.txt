@@ -1,0 +1,107 @@
+2016.4.郝日亮
+1.TServAutoR::AutoProc_QCH()中SubmitJilInfo_pt(Numplate,fWeight*0.001,0)修改
+2.TService::SetThrProc新增
+ case 1:	_Thread->_fpProc=AutoProc_ParkingCR; break;
+ case 4:	_Thread->_fpProc=AutoProc_MCCR;	break;
+3.Thread_Start::Load()新增case 1: case 4:
+4.TFrmMain::UpdJiem()中switch(global_Service._sysInfo.NodeID)新增case 1: case 4:
+5.TServAutoR::AutoProc_ParkingCR()新增停车场流程
+6.新增TServDevCtrl::FinishCRC(String wavName,String strLed,String strSta,String strList,bool bHeadDZIsUp,bool bTailDZIsUp,int LedAdr)
+7.TServAutoR::AutoProc_MCCR()新增煤场流程
+8.TServBase::ReadCfg() 中修改仪表读取配置，修改继电器模块for (int i = 0; i < 4; i++)
+
+2016.4.20 武文斌
+1、TServDevCtrl类新增函数 WriteICCard;
+2、Basic.cpp中TDataSwitch类新增函数IsValid_HexStr
+3、TServJiek类中新增函数WriteCard，用于WebService服务的写IC卡功能；
+4、项目NmlxDevCtrl中，NmlxDeviceControl.cpp中的DataRequst新增了Case9分支;
+5、改进TServBase中的ReadCfg函数；
+6、改进TServDevCtrl中的OpenReader函数，防止型号错误导致生成的设备对象为空时，引起的内存错误。
+
+2016.4.22 武文斌
+1、界面新增矿发量录入面板,右侧信息区增增加矿发量录入区,TServBase中新增 _fKuangfl变量,用于接收矿发量；
+2、原车号确认按钮的点击事件函数的内容进行了调整；
+3、发卡的确认按钮点击事件函数的内容进行了调请；
+4、验票提交函数修改：增加了矿发量参数;
+5、自助发卡线程函数中，在读IC卡成功后，增加写IC卡的代码；
+
+2016.4.27 武文斌
+1、TServJiek新增bool SamControl函数，调整UTF8String SamControl()函数；新增bool ZYSamStaInfo()函数，调整UTF8String ZYSamStaInfo()函数;
+2、TServJiek新增void SamUnloadProc(String Location)卸料过程函数；
+3、TServBase新增Protected变量_bForceEndSamUnload，初始值false，_bEnterSamUnload（false）_Cybm _Zybm _CYLocation _ZYLocation;
+
+2016.4.28 武文斌
+1、TServJiek新增bool TServJiek::SaveZhiybjData_pt()函数，用于上传制样信息；
+2、TServJiek新增bool TServJiek::SamUnload函数，调整UTF8String TServJiek::SamUnload；
+3、TServJiek新增bool ReadSamLoadStatus函数，用于读取采样机的卸料完成状态；
+4、修改TServJiek中的CYJStaDecode函数；
+5、新增bool TServJiek::ZYSamUnload函数，调整UTF8String TServJiek::ZYSamUnload函数；
+6、TJsonReq中新增bool GetCZYLocation函数，用于同时读取采样机和制样机的编号；
+7、TServJiek新增UTF8String TServJiek::ZYSamUnload_New函数，供平台调用；
+
+2016.4.29 武文斌
+1、新增UTF8String TServJiek::ForceEndSamLoad函数，强制中止制样过程；
+2、工程NmlxDevCtrl中NmlxDeviceControl.cpp,DataRequst接口中新增case10和case11;
+3、工程NmlxDevCtrl中Unit1.cpp中，ServiceExecute函数有变更；
+
+2016.5.5 武文斌
+1、主界面的PC_Model控件新增Page，名字是TS_ZZCC,用于自助出厂；
+2、Thread_Start.cpp中的Load()新增case 5,自助出厂；
+
+2016.5.6 武文斌
+1、配置文件device.ini中 [Reader_1]的注释变更；
+2、TServDevCtrl类新增函数ReceiveICCard，用于回收IC卡；
+3、TServAuto类中的AUtoBaseProc函数末尾中新增
+	if(5 ==_sysInfo.NodeID){	//---自助出厂；
+4、TServDevCtrl类新增函数DevStatusDecode_D3001，用于分析收卡装置D3001的状态；
+5、Basic.cpp中的TDataSwitch类中新增CharToBinStr函数，用于把字符转为2进制字符串；
+6、新增声音文件“插卡提示.wav”;
+7、ServAuto.cpp中，所有的if(_bReset){...}内，新加_bReset =false;的复位操作；
+
+2016.5.7 武文斌
+1、TServDevCtrl类新增函数RetCardProc_ZZCC，功能：退卡并等待司机；
+2、TServJiek新增函数ChupData，功能，调取出票信息；
+3、voBaseInfo.h中修改类 TBangdInfo，用于记录磅单信息，已使用TBangInfo的类的过程请修改；
+
+2016.5
+1.出票界面取消请插入磁卡界面的取消按键，修改为侧边取消
+2.出票界面新增exit按键
+3.优化等待取票流程，由于不自动收卡，只能循环执行复位指令
+4.程序初始若通道存在卡，则进行收卡到票箱指令
+5.无法判断是否司机取走卡，执行退卡后默认司机已取卡
+6.停车场入口就行IC卡扇区写入车号
+2016.5.16 武文斌
+1、更新CommDevice.dll、CommDevice.lib文件，CommDevice.h中的TLeds类新增2个成员函数：SendPicToRam，SendPicToRam_2；
+2016.5.17 武文斌
+1、TServJiek新增函数SendLED_Diaod，用于WebService调用，发送LED调度信息（触发线程）；
+2、TServBase新增Public变量
+	//---LED公告屏信息
+	TStrings 	*_CarList;	//---当前调度车辆
+	int         _ParkingNum_Total;	//---停车场总车位数
+	int			_ParkingNum_Surplus;	//---停车场剩余车位
+	int			_ScheduledNum;	//---当前场内的被调度车数
+	int 		_ToScheduleNum;	//---当前场内未调试车数
+	bool		_bSendLED_DDInfo;	//---是否发送LED调运信息
+	Thr_LedSend *_Thr_LedSend;
+	struct LedBmp_Struct{
+		TBitmap	*_bm[16];	//---发送到LED的图片
+		int picNum;
+	};
+	LedBmp_Struct _LedBmp;
+   在构造函数中有初始化；
+3、新增Thread_Send线程类，用于控制LED信息的发送；   
+
+2016.5.18 武文斌
+1、TServBase类中LED公告屏的相关变量的变更与新增；
+2、TservBase类中新增二个函数：WritePic_DDInfo、WritePic_GGInfo，用于生成调试信息的图片和公告信息的图片；
+
+2016.5.19 武文斌
+1、TServJiek新增函数SendLED_Gongg，用于WebService调用，发送LED公告信息（触发线程）；
+2、主窗体新增Page:TS_WebService页，新增Timer控件：tmr_WebService，用于同步收发数据；
+3、TServBase类新增变量：
+	//---用于WebService测试界面同步收发数据，在构造函数有初始化
+	UTF8String	_strReqJson;
+	UTF8String	_strRetJson;
+	bool		_bSyncSoapData;	
+4、NmlxDeviceControl.cpp中，TNmlxDeviceControlImpl类的DataRequst函数有改动；
+5、NmlxDevCtrl服务程序中的Unit1.cpp中的ServiceExecute函数有改动；

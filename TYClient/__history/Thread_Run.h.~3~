@@ -1,0 +1,19 @@
+//---------------------------------------------------------------------------
+
+#ifndef Thread_RunH
+#define Thread_RunH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+//---------------------------------------------------------------------------
+
+typedef void __fastcall (__closure *fp_Proce)(void);
+class Thread_Run : public TThread
+{
+private:
+protected:
+	void __fastcall Execute();
+public:
+	__fastcall Thread_Run(bool CreateSuspended);
+};
+//---------------------------------------------------------------------------
+#endif

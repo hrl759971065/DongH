@@ -1,0 +1,78 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Dlg_Main.h"
+#include "Service.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "RzPanel"
+#pragma link "RzTabs"
+#pragma link "RzSplit"
+#pragma link "RzStatus"
+#pragma link "RzGrids"
+#pragma link "RzEdit"
+#pragma link "RzLabel"
+#pragma link "RzButton"
+#pragma link "RzRadChk"
+#pragma link "RzSndMsg"
+#pragma link "RzDBGrid"
+#pragma resource "*.dfm"
+TFormMain *FormMain;
+//---------------------------------------------------------------------------
+void TFormMain::DBGridRecordSize(TColumn *mColumn)
+{
+	
+}
+
+__fastcall TFormMain::TFormMain(TComponent* Owner)
+	: TForm(Owner)
+{
+	M_Load->Width =309;
+	M_Load->Height=214;
+	M_Load->Top =this->Height -M_Load->Height - SB_Status->Height -60;
+	M_Load->Left =0;
+
+	global_Service.LoadingThr();
+}
+//---------------------------------------------------------------------------
+void __fastcall TFormMain::RzButton4Click(TObject *Sender)
+{
+	ClientDataSet1->Close();
+	ClientDataSet1->Filter ="性别='男'";
+	ClientDataSet1->Filtered =true;
+	ClientDataSet1->Open();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFormMain::Button1Click(TObject *Sender)
+{
+    //---Test
+	//UTF8String str =global_Service.SamStaInfo(Memo1->Text);
+	return;
+	if(!global_Service.GetGeneralData_pt(Memo1->Text,ClientDataSet1)){
+		ShowMessage(global_Service.GetLastErrS());
+	}
+
+	global_Service.MakeDBGridColumnsAutoFixItsWidth(RzDBGrid1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFormMain::RzDBGrid1DrawColumnCell(TObject *Sender, const TRect &Rect,
+		  int DataCol, TColumn *Column, TGridDrawState State)
+{
+
+	if(gdSelected == State.ToInt()){
+		return;
+	}
+
+	if (((TDBGrid*)Sender)->DataSource->DataSet->RecNo %2){
+
+		((TDBGrid*)Sender)->Canvas->Brush->Color =clRed; //---定义背景颜色
+	}
+}
+//---------------------------------------------------------------------------
+
+

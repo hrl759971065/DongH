@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{82EBBA6B-403C-4876-9C2D-04CFB760A1D0}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="TYClient.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="WinServiceApp\NmlxDevCtrl.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="TYClient">
+			<MSBuild Projects="TYClient.cbproj"/>
+		</Target>
+		<Target Name="TYClient:Clean">
+			<MSBuild Projects="TYClient.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="TYClient:Make">
+			<MSBuild Projects="TYClient.cbproj" Targets="Make"/>
+		</Target>
+		<Target Name="NmlxDevCtrl">
+			<MSBuild Projects="WinServiceApp\NmlxDevCtrl.cbproj"/>
+		</Target>
+		<Target Name="NmlxDevCtrl:Clean">
+			<MSBuild Projects="WinServiceApp\NmlxDevCtrl.cbproj" Targets="Clean"/>
+		</Target>
+		<Target Name="NmlxDevCtrl:Make">
+			<MSBuild Projects="WinServiceApp\NmlxDevCtrl.cbproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="TYClient;NmlxDevCtrl"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="TYClient:Clean;NmlxDevCtrl:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="TYClient:Make;NmlxDevCtrl:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>

@@ -1,0 +1,54 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "FormStart.h"
+#include "Service.h"
+#include "FormLogin.h"
+#include "FormMain.h"
+
+#include "Basic.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "RzEdit"
+#pragma resource "*.dfm"
+TFrmStart *FrmStart;
+//---------------------------------------------------------------------------
+__fastcall TFrmStart::TFrmStart(TComponent* Owner)
+	: TForm(Owner)
+{
+
+}
+//---------------------------------------------------------------------------
+void __fastcall TFrmStart::FormShow(TObject *Sender)
+{
+	//tmr1->Enabled =true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TFrmStart::FormCreate(TObject *Sender)
+{
+   //	AnimateWindow(Handle,2000,AW_BLEND);
+}
+//---------------------------------------------------------------------------
+void __fastcall TFrmStart::tmr1Timer(TObject *Sender)
+{
+	tmr1->Enabled =false;
+	//AnimateWindow(Handle,3000,AW_HIDE || AW_BLEND);
+	Hide();
+	if(6 ==global_Service._sysInfo.NodeID){
+
+		FrmLogin->Show();
+	}else{
+		FrmMain->Show();
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TFrmStart::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	//Action =caFree;
+}
+//---------------------------------------------------------------------------
+
+
+

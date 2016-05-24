@@ -1,0 +1,31 @@
+//---------------------------------------------------------------------------
+
+#ifndef ServiceH
+#define ServiceH
+#include "ServAutoR.h"
+//---------------------------------------------------------------------------
+
+namespace NS_Rjssb{
+
+
+
+class TService : public TServAutoR{
+public:
+	TService();
+	~TService();
+
+	void LoadingThr();
+	void SetThrProc(int nNodeID);
+
+	void __fastcall _beginThr();
+	void __fastcall _StopThr();
+};
+
+extern TService global_Service;
+};
+
+#if !defined(NO_IMPLICIT_NAMESPACE_USE)
+using  namespace NS_Rjssb;
+#endif
+
+#endif

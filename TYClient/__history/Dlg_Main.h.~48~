@@ -1,0 +1,81 @@
+//---------------------------------------------------------------------------
+
+#ifndef Dlg_MainH
+#define Dlg_MainH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <Vcl.Controls.hpp>
+#include <Vcl.StdCtrls.hpp>
+#include <Vcl.Forms.hpp>
+#include "RzPanel.hpp"
+#include <Vcl.ExtCtrls.hpp>
+#include "RzTabs.hpp"
+#include "RzSplit.hpp"
+#include "RzStatus.hpp"
+#include "RzGrids.hpp"
+#include <Vcl.Grids.hpp>
+#include "RzEdit.hpp"
+#include <Vcl.Mask.hpp>
+#include "RzLabel.hpp"
+#include "RzButton.hpp"
+#include "RzRadChk.hpp"
+#include "RzSndMsg.hpp"
+#include "RzDBGrid.hpp"
+#include <Vcl.DBGrids.hpp>
+#include <Data.DB.hpp>
+#include <Datasnap.DBClient.hpp>
+//---------------------------------------------------------------------------
+class TForm2 : public TForm
+{
+__published:	// IDE-managed Components
+	TRzStatusBar *RzStatusBar1;
+	TRzPageControl *PC_Model;
+	TRzTabSheet *TS_Banka;
+	TRzPanel *RzPanel1;
+	TRzPanel *RzPanel2;
+	TRzSplitter *RzSplitter1;
+	TRzStatusPane *RzStatusPane1;
+	TRzGroupBox *RzGroupBox2;
+	TRzGroupBox *RzGroupBox1;
+	TRzGroupBox *RzGroupBox3;
+	TRzEdit *RzEdit2;
+	TRzGroupBox *RzGroupBox4;
+	TRzEdit *RzEdit3;
+	TRzLabel *RzLabel1;
+	TRzGroupBox *RzGroupBox5;
+	TRzEdit *RzEdit1;
+	TRzGroupBox *RzGroupBox6;
+	TRzEdit *RzEdit4;
+	TRzGroupBox *RzGroupBox7;
+	TRzEdit *RzEdit5;
+	TRzButton *RzButton1;
+	TRzButton *RzButton2;
+	TRzButton *RzButton3;
+	TRzGroupBox *RzGroupBox8;
+	TRzGroupBox *RzGroupBox9;
+	TRzDateTimeEdit *RzDateTimeEdit1;
+	TRzGroupBox *RzGroupBox10;
+	TRzDateTimeEdit *RzDateTimeEdit2;
+	TRzGroupBox *RzGroupBox11;
+	TRzEdit *RzEdit6;
+	TRzCheckBox *RzCheckBox1;
+	TRzButton *RzButton4;
+	TRzSendMessage *RzSendMessage1;
+	TRzDBGrid *RzDBGrid1;
+	TDataSource *DataSource1;
+	TClientDataSet *ClientDataSet1;
+	TMemo *Memo1;
+	TButton *Button1;
+	void __fastcall RzButton4Click(TObject *Sender);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall RzDBGrid1DrawColumnCell(TObject *Sender, const TRect &Rect, int DataCol,
+          TColumn *Column, TGridDrawState State);
+private:	// User declarations
+	void DBGridRecordSize(TColumn *mColumn);
+public:		// User declarations
+	__fastcall TForm2(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm2 *Form2;
+//---------------------------------------------------------------------------
+#endif
